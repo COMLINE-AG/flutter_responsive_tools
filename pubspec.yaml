@@ -1,0 +1,16 @@
+name: responsive_tools
+description: A collection of widgets and tools for creating layouts that work well on mobile phones and tablets
+version: 0.0.1
+author: Timm Klibisch <timm.klibisch@conplement.de>
+homepage: https://www.conplement.de/de
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
