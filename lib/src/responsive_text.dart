@@ -10,12 +10,12 @@ part of responsive_tools;
 class ResponsiveText extends StatelessWidget {
   final String text;
   final TextSize size;
-  final Color color;
-  final String fontFamily;
+  final Color? color;
+  final String? fontFamily;
 
   ResponsiveText({
-    @required this.text,
-    @required this.size,
+    required this.text,
+    required this.size,
     this.color,
     this.fontFamily,
   });
@@ -33,8 +33,8 @@ class ResponsiveText extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: fontSize,
-        color: color != null ? color : Theme.of(context).textTheme.bodyText1.color,
-        fontFamily: fontFamily != null ? fontFamily : Theme.of(context).textTheme.bodyText1.fontFamily,
+        color: color != null ? color : Theme.of(context).textTheme.bodyText1!.color,
+        fontFamily: fontFamily != null ? fontFamily : Theme.of(context).textTheme.bodyText1!.fontFamily,
       ),
     );
   }
