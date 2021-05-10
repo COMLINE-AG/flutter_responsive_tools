@@ -5,19 +5,19 @@ part of responsive_tools;
 class SizeTools {
   final double _standardPaddingPercent = 0.03;
 
-  static SizeTools _instance;
-  static double _systemTextScaleFactor;
-  static double _screenWidth;
-  static double _screenHeight;
-  static Orientation _orientation;
-  static double _statusBarHeight;
-  static double _bottomBarHeight;
+  static SizeTools? _instance;
+  static double? _systemTextScaleFactor;
+  static double? _screenWidth;
+  static double? _screenHeight;
+  static Orientation? _orientation;
+  static late double _statusBarHeight;
+  static late double _bottomBarHeight;
 
   SizeTools._();
 
   factory SizeTools() {
     assert(_instance != null, '\SizeTools have not been initialized\n');
-    return _instance;
+    return _instance!;
   }
 
   /// SizeTools need to be initialized in your main() method. Example:
@@ -44,7 +44,7 @@ class SizeTools {
 
     _screenWidth = constraints.maxWidth;
     _screenHeight = constraints.maxHeight;
-    _orientation = _screenWidth > _screenHeight ? Orientation.landscape : Orientation.portrait;
+    _orientation = _screenWidth! > _screenHeight! ? Orientation.landscape : Orientation.portrait;
 
     var window = WidgetsBinding.instance?.window ?? ui.window;
     _statusBarHeight = window.padding.top;
@@ -52,24 +52,24 @@ class SizeTools {
     _systemTextScaleFactor = window.textScaleFactor;
   }
 
-  double get width => _screenWidth;
-  double get height => _screenHeight;
-  Orientation get orientation => _orientation;
-  double get effectiveHeight => _screenHeight - _statusBarHeight - _bottomBarHeight;
-  double get smallestDimension => _screenWidth > _screenHeight ? _screenHeight : _screenWidth;
-  double get standardPadding => smallestDimension * _standardPaddingPercent;
+  double? get width => _screenWidth;
+  double? get height => _screenHeight;
+  Orientation? get orientation => _orientation;
+  double get effectiveHeight => _screenHeight! - _statusBarHeight - _bottomBarHeight;
+  double? get smallestDimension => _screenWidth! > _screenHeight! ? _screenHeight : _screenWidth;
+  double get standardPadding => smallestDimension! * _standardPaddingPercent;
   double get standardPadding2x => standardPadding * 2;
   double get halfPadding => standardPadding / 2;
   double get quarterPadding => standardPadding / 4;
 
-  double widthPercent(double percent) => _screenWidth * percent;
-  double heightPercent(double percent) => _screenHeight * percent;
+  double widthPercent(double percent) => _screenWidth! * percent;
+  double heightPercent(double percent) => _screenHeight! * percent;
 
   double adjustFontSize(double fontSize) {
-    double scaleFactor = min(_screenWidth / 1000.0, _screenHeight / 1000.0);
+    double scaleFactor = min(_screenWidth! / 1000.0, _screenHeight! / 1000.0);
     double adjustedFontSize = fontSize * scaleFactor;
     if (_systemTextScaleFactor != null) {
-      adjustedFontSize = adjustedFontSize * _systemTextScaleFactor;
+      adjustedFontSize = adjustedFontSize * _systemTextScaleFactor!;
     }
     return adjustedFontSize;
   }

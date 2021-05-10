@@ -15,10 +15,10 @@ class ResponsiveLayout extends StatelessWidget {
   final Widget tabletLandscape;
 
   ResponsiveLayout({
-    @required this.mobilePortrait,
-    @required this.mobileLandscape,
-    @required this.tabletPortrait,
-    @required this.tabletLandscape,
+    required this.mobilePortrait,
+    required this.mobileLandscape,
+    required this.tabletPortrait,
+    required this.tabletLandscape,
   });
 
   @override
