@@ -11,3 +11,4 @@ part 'src/size_tools.dart';
 part 'src/responsive_font_size.dart';
 part 'src/responsive_layout.dart';
 part 'src/responsive_text.dart';
+part 'src/responsive_rich_text.dart';

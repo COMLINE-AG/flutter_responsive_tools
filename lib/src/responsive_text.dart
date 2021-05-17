@@ -8,33 +8,45 @@ part of responsive_tools;
 ///   color: Colors.red,
 /// )
 class ResponsiveText extends StatelessWidget {
+  static const MAX_TEXT_LINES = 1000000;
+
   final String text;
-  final TextSize size;
+  final TextSize? size;
   final Color? color;
   final String? fontFamily;
+  final TextOverflow? overflow;
+  final int? maxLines;
+  final TextAlign? textAlign;
 
   ResponsiveText({
     required this.text,
-    required this.size,
+    this.size,
     this.color,
     this.fontFamily,
+    this.overflow,
+    this.maxLines,
+    this.textAlign,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: _buildText(getMobileFontSize(size), context),
-      tablet: _buildText(getTabletFontSize(size), context),
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        return _buildText(getDeviceFontSize(size ?? TextSize.M, sizingInformation), context);
+      },
     );
   }
 
   Text _buildText(double fontSize, BuildContext context) {
     return Text(
       text,
+      overflow: overflow ?? TextOverflow.ellipsis,
+      maxLines: maxLines ?? MAX_TEXT_LINES,
+      textAlign: textAlign ?? TextAlign.start,
       style: TextStyle(
         fontSize: fontSize,
-        color: color != null ? color : Theme.of(context).textTheme.bodyText1!.color,
-        fontFamily: fontFamily != null ? fontFamily : Theme.of(context).textTheme.bodyText1!.fontFamily,
+        color: color ?? Theme.of(context).textTheme.bodyText1?.color,
+        fontFamily: fontFamily ?? Theme.of(context).textTheme.bodyText1?.fontFamily,
       ),
     );
   }
