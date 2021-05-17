@@ -11,6 +11,7 @@ class ResponsiveText extends StatelessWidget {
   static const MAX_TEXT_LINES = 1000000;
 
   final String text;
+  final Key? key;
   final TextSize? size;
   final Color? color;
   final String? fontFamily;
@@ -21,6 +22,7 @@ class ResponsiveText extends StatelessWidget {
 
   ResponsiveText({
     required this.text,
+    this.key,
     this.size,
     this.color,
     this.fontFamily,
@@ -42,6 +44,7 @@ class ResponsiveText extends StatelessWidget {
   Text _buildText(double fontSize, BuildContext context) {
     return Text(
       text,
+      key: key,
       semanticsLabel: semanticsLabel ?? text,
       overflow: overflow ?? TextOverflow.ellipsis,
       maxLines: maxLines ?? MAX_TEXT_LINES,
