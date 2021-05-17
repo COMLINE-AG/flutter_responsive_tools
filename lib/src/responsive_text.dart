@@ -17,6 +17,7 @@ class ResponsiveText extends StatelessWidget {
   final TextOverflow? overflow;
   final int? maxLines;
   final TextAlign? textAlign;
+  final String? semanticsLabel;
 
   ResponsiveText({
     required this.text,
@@ -26,6 +27,7 @@ class ResponsiveText extends StatelessWidget {
     this.overflow,
     this.maxLines,
     this.textAlign,
+    this.semanticsLabel,
   });
 
   @override
@@ -40,6 +42,7 @@ class ResponsiveText extends StatelessWidget {
   Text _buildText(double fontSize, BuildContext context) {
     return Text(
       text,
+      semanticsLabel: semanticsLabel ?? text,
       overflow: overflow ?? TextOverflow.ellipsis,
       maxLines: maxLines ?? MAX_TEXT_LINES,
       textAlign: textAlign ?? TextAlign.start,

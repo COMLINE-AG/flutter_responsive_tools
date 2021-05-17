@@ -32,6 +32,7 @@ class ResponsiveRichText extends StatelessWidget {
       fontFamily: responsiveText.fontFamily ?? Theme.of(context).textTheme.bodyText1!.fontFamily,
     );
     return TextSpan(
+      semanticsLabel: responsiveText.semanticsLabel,
       text: responsiveText.text,
       style: style,
     );
