@@ -2,9 +2,9 @@ part of responsive_tools;
 
 class ResponsiveRichText extends StatelessWidget {
   final List<ResponsiveText> children;
-  final Key? key;
+  final Key? richTextKey;
 
-  ResponsiveRichText({required this.children, this.key});
+  ResponsiveRichText({required this.children, this.richTextKey});
 
   @override
   Widget build(BuildContext context) {
