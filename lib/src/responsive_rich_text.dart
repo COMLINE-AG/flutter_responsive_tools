@@ -2,14 +2,16 @@ part of responsive_tools;
 
 class ResponsiveRichText extends StatelessWidget {
   final List<ResponsiveText> children;
+  final Key? key;
 
-  ResponsiveRichText({required this.children});
+  ResponsiveRichText({required this.children, this.key});
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         return RichText(
+          key: key,
           text: TextSpan(
             children: [
               for (ResponsiveText child in children)
